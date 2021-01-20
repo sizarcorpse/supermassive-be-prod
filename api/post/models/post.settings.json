@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "post",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100,
+      "minLength": 1
+    },
+    "categories": {
+      "via": "posts",
+      "collection": "category"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 1
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "views": {
+      "type": "integer"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "isEditorsChoise": {
+      "type": "boolean",
+      "default": false
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "post"
+    },
+    "meta_title": {
+      "type": "text",
+      "minLength": 1
+    },
+    "meta_description": {
+      "type": "text",
+      "minLength": 1
+    },
+    "commentCounts": {
+      "type": "integer"
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "post"
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}
