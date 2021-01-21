@@ -18,8 +18,8 @@
       "minLength": 1
     },
     "categories": {
-      "via": "posts",
-      "collection": "category"
+      "collection": "category",
+      "via": "posts"
     },
     "content": {
       "type": "richtext",
@@ -49,7 +49,8 @@
       "targetField": "title"
     },
     "views": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "isFeatured": {
       "type": "boolean",
@@ -72,7 +73,8 @@
       "minLength": 1
     },
     "commentCounts": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "tags": {
       "collection": "tag",
