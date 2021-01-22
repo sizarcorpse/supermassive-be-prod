@@ -19,4 +19,14 @@ module.exports = {
       sanitizeEntity(entity, { model: strapi.models.category })
     );
   },
+  async contents(ctx) {
+    let entities;
+    if (ctx.query._q) {
+      entities = await strapi.services.category.search(ctx.query);
+    } else {
+      entities = await strapi.services.category.contents(ctx.query);
+    }
+
+    return sanitizeEntity(entities, { model: strapi.models.category });
+  },
 };

@@ -17,4 +17,12 @@ module.exports = {
       .skip((parseInt(_page) - 1) * parseInt(_limit))
       .limit(parseInt(_limit));
   },
+
+  async viewInc(params, data, { files } = {}) {
+    await strapi
+      .query("post")
+      .update({ _id: params.id }, { $inc: { views: +1 } });
+
+    return `viewed`;
+  },
 };

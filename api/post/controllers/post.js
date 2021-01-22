@@ -19,4 +19,12 @@ module.exports = {
       sanitizeEntity(entity, { model: strapi.models.post })
     );
   },
+
+  async views(ctx) {
+    const { id } = ctx.params;
+
+    const entity = await strapi.services.post.findOne({ id });
+    await strapi.services.post.viewInc({ id });
+    return sanitizeEntity(entity, { model: strapi.models.post });
+  },
 };
